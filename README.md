@@ -20,7 +20,7 @@ Streamlined workflow with automatic initiation of the Office installation proces
 Clone or download the OfficeEz repository to your local machine.
 
 
-Ensure you have Python installed, along with the required libraries (downpy, requests, and tqdm).\
+Ensure you have Python installed, along with the required libraries (requests, and tqdm).
 
 
 Run the script (ezoffice.py) in a Python environment.
