@@ -23,7 +23,7 @@ Clone or download the OfficeEz repository to your local machine.
 Ensure you have Python installed, along with the required libraries (downpy, requests, and tqdm).\
 
 
-Run the script (ezoffice.exe) in a Python environment.
+Run the script (ezoffice.py) in a Python environment.
 
 
 Follow the on-screen prompts to select your desired Office version and choose the installation directory.
