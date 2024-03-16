@@ -5,26 +5,17 @@ import requests
 
 def download_file(url, save_path):
     try:
-        # Send a GET request to the URL
         response = requests.get(url, stream=True)
-        # Check if the request was successful (status code 200)
         if response.status_code == 200:
-            # Generate a unique file name if save_path is a directory
             if os.path.isdir(save_path):
                 file_name = "OfficeSetup.exe"
                 save_path = os.path.join(save_path, file_name)
-            # Get the total file size
             total_size = int(response.headers.get('content-length', 0))
-            # Initialize the progress bar
             progress = tqdm(total=total_size, unit='B', unit_scale=True)
-            # Open a file in binary write mode and write the downloaded content
             with open(save_path, 'wb') as f:
                 for data in response.iter_content(chunk_size=1024):
-                    # Write data to file
                     f.write(data)
-                    # Update progress bar
                     progress.update(len(data))
-            # Close the progress bar
             progress.close()
             print("\nFile downloaded successfully!")
             print("File saved as:", save_path)
