@@ -1,0 +1,11 @@
+# GUI and Widget Libraries
+tk
+sv-ttk  # Modernized styling for Tkinter
+
+# File download and progress display
+requests  # HTTP library for downloading files
+tqdm      # Progress bar display
+
+# For Executing Subprocess Commands
+#pyinstaller  # Required only for local testing with PyInstaller
+
