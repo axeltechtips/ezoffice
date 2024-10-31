@@ -3,17 +3,16 @@ import subprocess
 import requests
 import tkinter as tk
 from tkinter import ttk, filedialog
-import sv_ttk
 
 class OfficeDownloaderApp:
     def __init__(self, root):
         self.root = root
         self.root.title("EzOffice - Office Downloader")
         self.root.geometry("540x400")
-        self.root.configure(padx=20, pady=20)
+        self.root.configure(padx=20, pady=20, bg="#2E2E2E")  # Dark background color
 
-        # Apply modern dark theme with sv_ttk
-        sv_ttk.set_theme("dark")
+        # Set up modern dark theme styles
+        self.setup_styles()
 
         # URLs for different Office versions
         self.urls = {
@@ -26,33 +25,45 @@ class OfficeDownloaderApp:
         # Create widgets
         self.create_widgets()
 
+    def setup_styles(self):
+        style = ttk.Style()
+        style.theme_use("clam")
+
+        # Configure styles for dark mode
+        style.configure("TFrame", background="#2E2E2E")
+        style.configure("TLabel", background="#2E2E2E", foreground="#FFFFFF", font=("Helvetica Neue", 12))
+        style.configure("TCombobox", fieldbackground="#3E3E3E", background="#2E2E2E", foreground="#FFFFFF", font=("Helvetica Neue", 12))
+        style.configure("TEntry", fieldbackground="#3E3E3E", background="#2E2E2E", foreground="#FFFFFF", font=("Helvetica Neue", 12))
+        style.configure("TButton", background="#007ACC", foreground="#FFFFFF", font=("Helvetica Neue", 12), padding=5)
+        style.map("TButton", background=[("active", "#005B99")])
+
     def create_widgets(self):
         # Title label
         title_label = ttk.Label(self.root, text="EzOffice", font=("Helvetica Neue", 20, "bold"))
         title_label.pack(pady=(10, 20))
 
         # Office version dropdown
-        version_label = ttk.Label(self.root, text="Select Office Version", font=("Helvetica Neue", 12))
+        version_label = ttk.Label(self.root, text="Select Office Version")
         version_label.pack(anchor="w", padx=5, pady=(10, 5))
         
-        self.version_combobox = ttk.Combobox(self.root, values=list(self.urls.keys()), font=("Helvetica Neue", 12), state="readonly")
+        self.version_combobox = ttk.Combobox(self.root, values=list(self.urls.keys()), state="readonly")
         self.version_combobox.pack(fill='x', pady=(0, 20), ipadx=5)
 
         # Directory selection frame
         directory_frame = ttk.Frame(self.root)
         directory_frame.pack(fill='x', pady=10)
 
-        directory_label = ttk.Label(directory_frame, text="Save Directory", font=("Helvetica Neue", 12))
+        directory_label = ttk.Label(directory_frame, text="Save Directory")
         directory_label.pack(side=tk.LEFT, padx=(0, 10))
 
-        self.directory_entry = ttk.Entry(directory_frame, font=("Helvetica Neue", 12))
+        self.directory_entry = ttk.Entry(directory_frame)
         self.directory_entry.pack(side=tk.LEFT, fill='x', expand=True)
 
         browse_button = ttk.Button(directory_frame, text="Browse", command=self.select_directory)
         browse_button.pack(side=tk.LEFT, padx=(10, 0))
 
         # Download button
-        download_button = ttk.Button(self.root, text="Download and Install", command=self.download_and_run, style="Accent.TButton")
+        download_button = ttk.Button(self.root, text="Download and Install", command=self.download_and_run)
         download_button.pack(pady=(20, 10))
 
         # Result label
