@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['C:\\Users\\Kash\\Documents\\GitHub\\ezoffice\\gui.py'],
+    ['gui.py'],
     pathex=[],
     binaries=[],
     datas=[],
