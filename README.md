@@ -1,4 +1,4 @@
-EzOffice
+# EzOffice
 
 EzOffice is a Python script designed to simplify the process of downloading and installing various versions of Microsoft Office directly from their official download links. This script provides an intuitive command-line interface for users to select their desired Office version, automating the download and installation process seamlessly.
 ## Key Features:
